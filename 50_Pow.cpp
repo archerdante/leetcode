@@ -17,7 +17,7 @@ class Solution
 	double pow(double x, unsigned int n)
 	{
 		if(n == 1) return x;
-		double a = pow(x,n/2);
+		double a = pow(x,n>>1);
 		if((n & 1) == 1) //n为奇数
 			return a*a*x;
 		else
