@@ -14,19 +14,15 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        vector<int> asc(26,0);
-        for(string::iterator it = s.begin(); it != s.end(); it++)
+        if(s.size() != t.size()) return false;
+        int word[26] = {0};
+        for(const auto &a : s)
         {
-            asc[(*it) - 'a']++;
+            word[a - 'a']++;
         }
-        for(string::iterator it = t.begin(); it != t.end(); it++)
+        for(const auto &b : t)
         {
-            int temp = --asc[(*it) - 'a'];
-            if(temp < 0) return false;
-        }
-        for(string::iterator it = s.begin(); it != s.end(); it++)
-        {
-            if(asc[(*it) - 'a'] > 0) return false;
+            if(word[b - 'a']-- == 0) return false;
         }
         return true;
     }
